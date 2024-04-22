@@ -3,6 +3,7 @@ import { createProduct, deleteProductById, getAllProducts, getBySlug, getProduct
 import { upload } from '../helpers/multer.js';
 import { isLoggedIn } from '../middlewares/auth.js';
 import { orderStatus } from '../controller/order.js';
+import { rateProduct } from '../controller/rating.js';
 
 const router = express.Router();
 
@@ -20,6 +21,8 @@ router.get("/related/:productId", relatedProduct)
 
 //payment
 router.post("/payment",isLoggedIn, processPayment)
+// rate product
+router.post("/rating/:productId", isLoggedIn, rateProduct)
 
 //orders
 

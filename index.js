@@ -5,6 +5,8 @@ import  authRouter  from './src/routes/auth.js';
 import  categoryRouter  from "./src/routes/category.js";
 import productRouter from "./src/routes/product.js"
 import orderRouter from "./src/routes/order.js"
+import {ratingRouter} from "./src/routes/rating.js"
+
 dotenv.config();
 
 // initialize express server
@@ -25,6 +27,7 @@ app.get('/', (req, res) =>{
 
 app.use("/api/auth", authRouter);
 app.use("/api/category", categoryRouter);
+app.use("/api/v1/rating", ratingRouter)
 
 app.use("/api/product", productRouter);
 app.use("/api/order",orderRouter );

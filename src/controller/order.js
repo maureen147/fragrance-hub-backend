@@ -20,7 +20,7 @@ export const orderStatus=async (req,res)=>{
 export const getAllOrder = async (req, res) => {
     try {
     // const totalOrder = await Order.countDocuments();  
-    const orders = await Order.findById()
+    const orders = await Order.find()
 
       res.status(200).json({sucess: true, message: "Showing All order", AllOrders: orders })
   } catch (err) {

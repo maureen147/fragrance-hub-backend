@@ -6,6 +6,7 @@ import  categoryRouter  from "./src/routes/category.js";
 import productRouter from "./src/routes/product.js"
 import orderRouter from "./src/routes/order.js"
 import {ratingRouter} from "./src/routes/rating.js"
+import cors from 'cors'
 
 dotenv.config();
 
@@ -13,6 +14,12 @@ dotenv.config();
 const app = express();
 // middlewares
 app.use(express.json());
+
+let corsOptions = { 
+    origin : ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000', "https://fragrance-hub.vercel.app" ], 
+  } 
+  app.use(cors(corsOptions));
+
 
 const port = process.env.PORT
 const dbUrl = process.env.MONGODB_URL 
@@ -23,6 +30,7 @@ connectDb(dbUrl);
 
 app.get('/', (req, res) =>{
     res.json({success: true, message: 'OK'});
+    ;
 })
 
 app.use("/api/auth", authRouter);
